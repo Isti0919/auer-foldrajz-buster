@@ -71,6 +71,13 @@ function start() {
   let currentquestion = getRandomPair(clength);
   question.textContent = "Minek a fővárosa " + capitals[currentquestion] + "?";
   buttons[getRandomPair(blength)].textContent = (countries[currentquestion]);
+  buttons.forEach(writingCapitals);
+};
+
+function writingCapitals(button) {
+  if (button.textContent.trim() == "") {
+    button.textContent = countries[getRandomPair(clength)];
+  } else{}
 };
 
 start();
