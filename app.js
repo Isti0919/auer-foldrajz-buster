@@ -55,11 +55,23 @@ const capitals = [
 ];
 const question = document.getElementById("question");
 const miniwrapper = document.querySelector(".mini-wrapper");
-const buttons = miniwrapper.querySelectorAll("button")
+const buttons = miniwrapper.querySelectorAll("button");
+const account = document.getElementById("account");
+const accountTab = document.getElementById("account-tab");
 let clength = countries.length;
 let blength = buttons.length;
 let lenght = undefined;
+let accOpen = false;
 
+account.addEventListener("click", () => {
+  if (accOpen) {
+    accountTab.style.display = "none";
+    accOpen = false;
+  } else {
+    accountTab.style.display = "flex";
+    accOpen = true;
+  }
+});
 
 function getRandomPair(length) {
   let counter = Math.floor(

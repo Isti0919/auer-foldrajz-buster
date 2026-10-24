@@ -41,3 +41,20 @@ button{
 footer{
     text-align: right;
 }
+#account{
+    position: relative;
+    height: fit-content;
+}
+#account-tab{
+    display: none;
+    width: 200px;
+    border: 4px solid black;
+    border-radius: 12px;
+    background: linear-gradient(95deg, purple, red);
+    position: absolute;
+    top: 100%;
+    left: 90%;
+}
+#account-tab > *{
+    margin: auto;
+}
