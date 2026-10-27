@@ -58,10 +58,16 @@ const miniwrapper = document.querySelector(".mini-wrapper");
 const buttons = miniwrapper.querySelectorAll("button");
 const account = document.getElementById("account");
 const accountTab = document.getElementById("account-tab");
+const cont = document.getElementById("next");
 let clength = countries.length;
 let blength = buttons.length;
 let lenght = undefined;
 let accOpen = false;
+let operation = undefined;
+let returnedCountries = undefined;
+let returnedCapitals = undefined;
+let write = undefined;
+let corrAnswer = undefined;
 
 account.addEventListener("click", () => {
   if (accOpen) {
@@ -80,16 +86,41 @@ function getRandomPair(length) {
 };
 
 function start() {
-  let currentquestion = getRandomPair(clength);
-  question.textContent = "Minek a fővárosa " + capitals[currentquestion] + "?";
-  buttons[getRandomPair(blength)].textContent = (countries[currentquestion]);
+  operation = getRandomPair(clength);
+  question.textContent = "Minek a fővárosa " + capitals[operation] + "?";
+  corrAnswer = countries[operation];
+  buttons[getRandomPair(blength)].textContent = (countries[operation]);
+  returnedCountries = filter(countries, countries[operation]);
+  returnedCapitals = filter(capitals, capitals[operation]);
   buttons.forEach(writingCapitals);
 };
 
 function writingCapitals(button) {
   if (button.textContent.trim() == "") {
-    button.textContent = countries[getRandomPair(clength)];
+    operation = getRandomPair(returnedCountries.length);
+    button.textContent = returnedCountries[operation];
+    returnedCountries = filter(returnedCountries, returnedCountries[operation]);
+    returnedCapitals = filter(returnedCapitals, returnedCapitals[operation]);
   } else{}
 };
 
+function filter(list, x) {
+  let convertedarray = Array.from(list);
+  let filtered = convertedarray.filter(number => number != x);
+  return filtered;
+};
+
+next.addEventListener("click", () => {
+  start();
+});
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    if (button.textContent.trim() === corrAnswer) {
+      alert("Correct!")
+    } else {
+      alert("False!")
+    }
+  });
+});
 start();
