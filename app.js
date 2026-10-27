@@ -111,6 +111,9 @@ function filter(list, x) {
 };
 
 next.addEventListener("click", () => {
+  buttons.forEach(button => {
+    button.textContent = "";
+  });
   start();
 });
 
