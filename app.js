@@ -58,10 +58,9 @@ const miniwrapper = document.querySelector(".mini-wrapper");
 const buttons = miniwrapper.querySelectorAll("button");
 const account = document.getElementById("account");
 const accountTab = document.getElementById("account-tab");
-const cont = document.getElementById("next");
+const continueB = document.getElementById("next");
 let clength = countries.length;
 let blength = buttons.length;
-let lenght = undefined;
 let accOpen = false;
 let operation = undefined;
 let returnedCountries = undefined;
@@ -110,7 +109,7 @@ function filter(list, x) {
   return filtered;
 };
 
-next.addEventListener("click", () => {
+continueB.addEventListener("click", () => {
   buttons.forEach(button => {
     button.textContent = "";
   });
