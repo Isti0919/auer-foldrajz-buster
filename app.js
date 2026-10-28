@@ -59,6 +59,7 @@ const buttons = miniwrapper.querySelectorAll("button");
 const account = document.getElementById("account");
 const accountTab = document.getElementById("account-tab");
 const continueB = document.getElementById("next");
+const counter = document.getElementById("pointcount");
 let clength = countries.length;
 let blength = buttons.length;
 let accOpen = false;
@@ -67,6 +68,7 @@ let returnedCountries = undefined;
 let returnedCapitals = undefined;
 let write = undefined;
 let corrAnswer = undefined;
+let points = 0;
 
 account.addEventListener("click", () => {
   if (accOpen) {
@@ -85,6 +87,10 @@ function getRandomPair(length) {
 };
 
 function start() {
+  buttons.forEach(button => {
+    button.disabled = false;
+    button.style.backgroundColor = "";
+  })
   operation = getRandomPair(clength);
   question.textContent = "Minek a fővárosa " + capitals[operation] + "?";
   corrAnswer = countries[operation];
@@ -120,9 +126,25 @@ buttons.forEach(button => {
   button.addEventListener("click", () => {
     if (button.textContent.trim() === corrAnswer) {
       alert("Correct!")
+      buttons.forEach(button => {
+        button.disabled = true;
+      })
+      points += 10;
+      button.style.backgroundColor = "green";
+      pointsUpdate();
+      continueB.style.display = "block";
     } else {
       alert("False!")
+      button.disabled = true;
+      points -= 5;
+      button.style.backgroundColor = "red";
+      pointsUpdate();
     }
   });
 });
+
+function pointsUpdate() {
+  counter.textContent = "Points: " + points;
+};
+
 start();

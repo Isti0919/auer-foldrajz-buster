@@ -58,3 +58,6 @@ footer{
 #account-tab > *{
     margin: auto;
 }
+#next{
+    display: none;
+}
