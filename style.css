@@ -1,9 +1,15 @@
 :root{
     margin: 0;
     padding: 0;
-    --main-accent: rgba(237, 242, 133, 0.8);
+    --main-accent: rgba(237, 242, 133, 0.6);
 }
+body{
+    background-image: url("lines.png");
 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 main{
     display: flex;
     justify-content: center;
@@ -23,7 +29,7 @@ header{
 .wrapper{
     width: 70vw;
     height: 70vh;
-    border: black 5px solid;
+    border: rgba(0, 0, 0, 0.65) 5px solid;
     border-radius: 20px;
 }
 .mini-wrapper{
@@ -36,7 +42,10 @@ header{
     height: 40%;
 }
 button{
-    background-color: var(--main-accent);
+    background: var(--main-accent);
+    backdrop-filter: blur(2px);
+    border: 5px solid black;
+    border-radius: 10rem;
 }
 footer{
     text-align: right;
@@ -49,8 +58,10 @@ footer{
     display: none;
     width: 200px;
     border: 4px solid black;
+    background-color: transparent;
+    backdrop-filter: blur(6px);
+    padding: 5px;
     border-radius: 12px;
-    background: linear-gradient(95deg, purple, red);
     position: absolute;
     top: 100%;
     left: 90%;

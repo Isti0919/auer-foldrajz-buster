@@ -76,6 +76,7 @@ account.addEventListener("click", () => {
     accOpen = false;
   } else {
     accountTab.style.display = "flex";
+    accountTab.style.flexDirection = "column";
     accOpen = true;
   }
 });
