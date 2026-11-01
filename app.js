@@ -92,6 +92,7 @@ function start() {
     button.disabled = false;
     button.style.backgroundColor = "";
   })
+  continueB.style.display = "none";
   operation = getRandomPair(clength);
   question.textContent = "Minek a fővárosa " + capitals[operation] + "?";
   corrAnswer = countries[operation];
