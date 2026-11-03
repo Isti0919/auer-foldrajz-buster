@@ -60,15 +60,15 @@ const account = document.getElementById("account");
 const accountTab = document.getElementById("account-tab");
 const continueB = document.getElementById("next");
 const counter = document.getElementById("pointcount");
+const feedback = document.getElementById("answer-feedback");
 let clength = countries.length;
 let blength = buttons.length;
 let accOpen = false;
 let operation = undefined;
 let returnedCountries = undefined;
-let returnedCapitals = undefined;
 let write = undefined;
 let corrAnswer = undefined;
-let points = 0;
+let points = Number(localStorage.getItem("YourScore") || 0);
 
 account.addEventListener("click", () => {
   if (accOpen) {
@@ -89,10 +89,12 @@ function getRandomPair(length) {
 
 function start() {
   buttons.forEach(button => {
+    button.textContent = "";
     button.disabled = false;
     button.style.backgroundColor = "";
   })
   continueB.style.display = "none";
+  feedback.style.display = "none";
   operation = getRandomPair(clength);
   question.textContent = "Minek a fővárosa " + capitals[operation] + "?";
   corrAnswer = countries[operation];
@@ -106,8 +108,6 @@ function writingCapitals(button) {
   if (button.textContent.trim() == "") {
     operation = getRandomPair(returnedCountries.length);
     button.textContent = returnedCountries[operation];
-    returnedCountries = filter(returnedCountries, returnedCountries[operation]);
-    returnedCapitals = filter(returnedCapitals, returnedCapitals[operation]);
   } else{}
 };
 
@@ -118,35 +118,38 @@ function filter(list, x) {
 };
 
 continueB.addEventListener("click", () => {
-  buttons.forEach(button => {
-    button.textContent = "";
-  });
   start();
 });
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     if (button.textContent.trim() === corrAnswer) {
-      alert("Correct!")
       buttons.forEach(button => {
         button.disabled = true;
       })
       points += 10;
       button.style.backgroundColor = "green";
+      feedback.textContent = "Correct!";
+      feedback.style.color = "green";
+      feedback.style.display = "block";
       pointsUpdate();
       continueB.style.display = "block";
     } else {
-      alert("False!")
       button.disabled = true;
       points -= 5;
       button.style.backgroundColor = "red";
+      feedback.textContent = "False! Try again!";
+      feedback.style.color = "red";
+      feedback.style.display = "block";
       pointsUpdate();
     }
   });
 });
 
 function pointsUpdate() {
-  counter.textContent = "Points: " + points;
+  localStorage.setItem("YourScore", points);
+  counter.textContent = "Points: " + localStorage.getItem("YourScore");
 };
 
 start();
+pointsUpdate();

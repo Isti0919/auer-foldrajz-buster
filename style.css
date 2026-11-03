@@ -7,7 +7,7 @@ body{
     background-image: url("lines.png");
 
     background-size: cover;
-    background-position: center;
+    background-position: fixed;
     background-repeat: no-repeat;
 }
 main{
@@ -47,6 +47,9 @@ button{
     border: 5px solid black;
     border-radius: 10rem;
 }
+button:disabled{
+    color: black;
+}
 footer{
     text-align: right;
 }
@@ -71,4 +74,9 @@ footer{
 }
 #next{
     display: none;
+}
+#answer-feedback{
+    font-size: 1.2rem;
+    margin: 4px 0 0 0;
+    font-weight: bold;
 }
