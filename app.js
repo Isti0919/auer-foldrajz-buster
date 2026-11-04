@@ -61,6 +61,7 @@ const accountTab = document.getElementById("account-tab");
 const continueB = document.getElementById("next");
 const counter = document.getElementById("pointcount");
 const feedback = document.getElementById("answer-feedback");
+let returnedCapitals = undefined;
 let clength = countries.length;
 let blength = buttons.length;
 let accOpen = false;
@@ -106,8 +107,10 @@ function start() {
 
 function writingCapitals(button) {
   if (button.textContent.trim() == "") {
-    operation = getRandomPair(returnedCountries.length);
-    button.textContent = returnedCountries[operation];
+    let randomIndex = getRandomPair(returnedCountries.length);
+    button.textContent = returnedCountries[randomIndex];
+    returnedCountries = filter(returnedCountries, returnedCountries[randomIndex]);
+    returnedCapitals = filter(returnedCapitals, returnedCapitals[randomIndex]);
   } else{}
 };
 

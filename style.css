@@ -80,3 +80,9 @@ footer{
     margin: 4px 0 0 0;
     font-weight: bold;
 }
+@media(device-width < 640px){
+    body{
+    background-image: none;
+    background-color: beige;
+    }
+}
