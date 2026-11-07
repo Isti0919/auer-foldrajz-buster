@@ -61,7 +61,9 @@ const accountTab = document.getElementById("account-tab");
 const continueB = document.getElementById("next");
 const counter = document.getElementById("pointcount");
 const feedback = document.getElementById("answer-feedback");
-let returnedCapitals = undefined;
+const logInForm = document.querySelector("form");
+const coverBG = document.getElementById("log-in");
+const greeting = document.getElementById("greet");
 let clength = countries.length;
 let blength = buttons.length;
 let accOpen = false;
@@ -70,6 +72,14 @@ let returnedCountries = undefined;
 let write = undefined;
 let corrAnswer = undefined;
 let points = Number(localStorage.getItem("YourScore") || 0);
+
+logInForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let username = document.querySelector("#nameInput").value;
+  localStorage.setItem("nickname", username);
+  coverBG.style.display = "none";
+  greetUpdate();
+});
 
 account.addEventListener("click", () => {
   if (accOpen) {
@@ -89,6 +99,9 @@ function getRandomPair(length) {
 };
 
 function start() {
+  if (localStorage.getItem("nickname") !== null) {
+    coverBG.style.display = "none";
+  }else{};
   buttons.forEach(button => {
     button.textContent = "";
     button.disabled = false;
@@ -103,6 +116,7 @@ function start() {
   returnedCountries = filter(countries, countries[operation]);
   returnedCapitals = filter(capitals, capitals[operation]);
   buttons.forEach(writingCapitals);
+  greetUpdate()
 };
 
 function writingCapitals(button) {
@@ -141,7 +155,7 @@ buttons.forEach(button => {
       button.disabled = true;
       points -= 5;
       button.style.backgroundColor = "red";
-      feedback.textContent = "False! Try again!";
+      feedback.textContent = "Incorrect! Try again!";
       feedback.style.color = "red";
       feedback.style.display = "block";
       pointsUpdate();
@@ -152,6 +166,10 @@ buttons.forEach(button => {
 function pointsUpdate() {
   localStorage.setItem("YourScore", points);
   counter.textContent = "Points: " + localStorage.getItem("YourScore");
+};
+
+function greetUpdate() {
+  greeting.textContent = "Helló, " + localStorage.getItem("nickname");
 };
 
 start();

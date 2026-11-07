@@ -1,13 +1,33 @@
+#log-in {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    background-color: green;
+}
 :root{
     margin: 0;
     padding: 0;
     --main-accent: rgba(237, 242, 133, 0.6);
 }
+#log-in{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    z-index: 3;
+    background-color: rgba(160, 160, 160, 0.95);
+}
+form{
+    margin: auto;
+    border: black 3px solid;
+    background: transparent;
+    backdrop-filter: blur(2px);
+    padding: 20px;
+    border-radius: 2rem;
+}
 body{
     background-image: url("lines.png");
 
     background-size: cover;
-    background-position: fixed;
     background-repeat: no-repeat;
 }
 main{
@@ -16,7 +36,6 @@ main{
     align-items: center;
     flex: 1;
 }
-
 header{
     display: flex;
     flex-direction: row;

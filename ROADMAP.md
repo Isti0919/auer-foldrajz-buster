@@ -4,3 +4,4 @@
 4. Xp. ✓x
 5. Achievements, levels, etc.
 6. Styling.
+7. Implement more quiz modes and exercizes.
