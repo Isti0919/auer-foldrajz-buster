@@ -64,6 +64,7 @@ const feedback = document.getElementById("answer-feedback");
 const logInForm = document.querySelector("form");
 const coverBG = document.getElementById("log-in");
 const greeting = document.getElementById("greet");
+const statistics = document.getElementById("stats");
 let clength = countries.length;
 let blength = buttons.length;
 let accOpen = false;
@@ -105,7 +106,7 @@ function start() {
   buttons.forEach(button => {
     button.textContent = "";
     button.disabled = false;
-    button.style.backgroundColor = "";
+    button.classList.remove("correct", "incorrect");
   })
   continueB.style.display = "none";
   feedback.style.display = "none";
@@ -145,18 +146,18 @@ buttons.forEach(button => {
         button.disabled = true;
       })
       points += 10;
-      button.style.backgroundColor = "green";
-      feedback.textContent = "Correct!";
       feedback.style.color = "green";
+      feedback.textContent = "Correct!";
+      button.classList.add("correct");
       feedback.style.display = "block";
       pointsUpdate();
       continueB.style.display = "block";
     } else {
       button.disabled = true;
       points -= 5;
-      button.style.backgroundColor = "red";
-      feedback.textContent = "Incorrect! Try again!";
       feedback.style.color = "red";
+      feedback.textContent = "Incorrect! Try again!";
+      button.classList.add("incorrect");
       feedback.style.display = "block";
       pointsUpdate();
     }
@@ -166,6 +167,7 @@ buttons.forEach(button => {
 function pointsUpdate() {
   localStorage.setItem("YourScore", points);
   counter.textContent = "Points: " + localStorage.getItem("YourScore");
+  stats.textContent = "Points: " + localStorage.getItem("YourScore");
 };
 
 function greetUpdate() {
