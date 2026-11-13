@@ -49,6 +49,7 @@ header{
 .wrapper{
     width: 70vw;
     height: 70vh;
+    padding: 5px;
     border: rgba(0, 0, 0, 0.65) 5px solid;
     border-radius: 20px;
 }
@@ -85,11 +86,13 @@ button:disabled{
     margin-top: 5px;
 }
 footer{
-    text-align: right;
+    position: fixed;
+    bottom: 0;
 }
 #account{
     position: relative;
     height: fit-content;
+    margin-block: auto;
 }
 #account-tab{
     display: none;
@@ -143,5 +146,9 @@ footer{
     }
     #next{
         width: 50%;
+    }
+    #answer-feedback{
+        margin-block: auto;
+        font-size: 0.7rem;
     }
 }
