@@ -53,6 +53,25 @@ const capitals = [
     "Kyiv",
     "London"
 ];
+
+const achievements = [
+  {
+    name: "Welcome to the Hamster Wheel",
+    points: 10
+},
+  {
+    name: "Getting the hang of things 'round here?",
+    points: 100
+},
+  {
+    name: "You're not giving up that easily, are you?",
+    points: 500
+},
+  {
+    name: "Stop no-lifing.",
+    points: 1500
+}
+];
 const question = document.getElementById("question");
 const miniwrapper = document.querySelector(".mini-wrapper");
 const buttons = miniwrapper.querySelectorAll("button");
@@ -64,13 +83,14 @@ const feedback = document.getElementById("answer-feedback");
 const logInForm = document.querySelector("form");
 const coverBG = document.getElementById("log-in");
 const greeting = document.getElementById("greet");
-const statistics = document.getElementById("stats");
+const stats = document.getElementById("stats");
+const achievementTab = document.getElementById("achievement-container");
+const invidAchievements = achievementTab.querySelectorAll("li");
+const achievementies = Array.from(invidAchievements)
 let clength = countries.length;
 let blength = buttons.length;
 let accOpen = false;
 let operation = undefined;
-let returnedCountries = undefined;
-let write = undefined;
 let corrAnswer = undefined;
 let points = Number(localStorage.getItem("YourScore") || 0);
 
@@ -108,6 +128,9 @@ function start() {
     button.disabled = false;
     button.classList.remove("correct", "incorrect");
   })
+  achievementies.forEach((field, index) => {
+    field.textContent = achievements[index].name;
+  });
   continueB.style.display = "none";
   feedback.style.display = "none";
   operation = getRandomPair(clength);
@@ -117,6 +140,7 @@ function start() {
   returnedCountries = filter(countries, countries[operation]);
   returnedCapitals = filter(capitals, capitals[operation]);
   buttons.forEach(writingCapitals);
+  achievementCheck()
   greetUpdate()
 };
 
@@ -172,6 +196,18 @@ function pointsUpdate() {
 
 function greetUpdate() {
   greeting.textContent = "Helló, " + localStorage.getItem("nickname");
+};
+
+function achievementCheck() {
+  achievements.forEach((achi, index) => {
+    if (localStorage.getItem("achievement" + index) === "unlocked"){
+      achievementies[index].style.color = "green";
+    } else if (achi.points <= points) {
+      alert("Achievement unlocked: " + achi.name);
+      achievementies[index].style.color = "green";
+      localStorage.setItem("achievement" + index, "unlocked")
+    }
+  });
 };
 
 start();

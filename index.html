@@ -12,7 +12,7 @@
                 <h3>First Time Logging In.</h3>
                 <p>Your account lives in your browser.
                     No data leaves your device.</p>
-                <input id="nameInput" type="text" placeholder="Your username" minlength="4" required>
+                <input id="nameInput" name="username" type="text" placeholder="Your username" minlength="4" required>
                 <button type="submit">Submit</button>
                 <p>For now this can't be changed later.</p>
             </form>
@@ -22,7 +22,14 @@
                 <button>Account</button>
                 <div id="account-tab">
                     <p id="greet">Helló, név</p>
-                    <p id="stats">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus sed molestiae corrupti quod quidem quam, fugit illum excepturi explicabo fuga eaque obcaecati magnam officiis reprehenderit perspiciatis aut velit dolore id.</p>
+                    <p id="stats"></p>
+                    <p>Achievements: </p>
+                    <ul id="achievement-container">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
             </div>
             <p id="answer-feedback">Good or bad?</p>
@@ -50,3 +57,4 @@
         <script src="app.js">
         </script>
     </body>
+</html>
