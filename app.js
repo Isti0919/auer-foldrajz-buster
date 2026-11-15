@@ -93,6 +93,8 @@ let accOpen = false;
 let operation = undefined;
 let corrAnswer = undefined;
 let points = Number(localStorage.getItem("YourScore") || 0);
+let correct = Number(localStorage.getItem("correctSoFar")) || 0;
+let incorrect = Number(localStorage.getItem("incorrectSoFar")) || 0;
 
 logInForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -170,6 +172,8 @@ buttons.forEach(button => {
         button.disabled = true;
       })
       points += 10;
+      correct += 1;
+      localStorage.setItem("correctSoFar", correct);
       feedback.style.color = "green";
       feedback.textContent = "Correct!";
       button.classList.add("correct");
@@ -179,6 +183,8 @@ buttons.forEach(button => {
     } else {
       button.disabled = true;
       points -= 5;
+      incorrect += 1;
+      localStorage.setItem("incorrectSoFar", incorrect);
       feedback.style.color = "red";
       feedback.textContent = "Incorrect! Try again!";
       button.classList.add("incorrect");
@@ -191,7 +197,10 @@ buttons.forEach(button => {
 function pointsUpdate() {
   localStorage.setItem("YourScore", points);
   counter.textContent = "Points: " + localStorage.getItem("YourScore");
-  stats.textContent = "Points: " + localStorage.getItem("YourScore");
+  stats.textContent = "Points: " + localStorage.getItem("YourScore")
+    + "\nCorrect: " + correct
+    + "\nIncorrect: " + incorrect
+  ;
 };
 
 function greetUpdate() {

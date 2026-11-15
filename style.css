@@ -118,6 +118,9 @@ footer{
     text-wrap: nowrap;
     color: grey;
 }
+#stats{
+    white-space: pre-line;
+}
 
 #answer-feedback{
     font-size: 1.2rem;
@@ -156,6 +159,10 @@ footer{
     }
     #answer-feedback{
         margin-block: auto;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
+    }
+    #achievement-container > *{
+        color: rgba(0, 0, 0, 0.6);
+        font-weight: bold;
     }
 }

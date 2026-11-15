@@ -1,7 +1,7 @@
 1. Implement the buttons. ✓
 2. Randomize them. ✓
 3. Next button. ✓
-4. Xp. ✓x
+4. Xp. ✓
 5. Achievements, levels, etc.
 6. Styling.
 7. Implement more quiz modes and exercizes.
