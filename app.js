@@ -86,7 +86,8 @@ const greeting = document.getElementById("greet");
 const stats = document.getElementById("stats");
 const achievementTab = document.getElementById("achievement-container");
 const invidAchievements = achievementTab.querySelectorAll("li");
-const achievementies = Array.from(invidAchievements)
+const achievementies = Array.from(invidAchievements);
+const plusanione = document.getElementById("plusone");
 let clength = countries.length;
 let blength = buttons.length;
 let accOpen = false;
@@ -179,6 +180,7 @@ buttons.forEach(button => {
       button.classList.add("correct");
       feedback.style.display = "block";
       pointsUpdate();
+      correctAnswer();
       continueB.style.display = "block";
     } else {
       button.disabled = true;
@@ -190,6 +192,7 @@ buttons.forEach(button => {
       button.classList.add("incorrect");
       feedback.style.display = "block";
       pointsUpdate();
+      incorrectAnswer();
     }
   });
 });
@@ -218,6 +221,26 @@ function achievementCheck() {
     }
   });
 };
+
+function correctAnswer() {
+  plusanione.style.color = "green";
+  plusanione.style.animation = "none";
+
+  setTimeout(function () {
+    plusanione.style.display = "block";
+    plusanione.style.animation = "effect 2s 1 normal forwards";
+  }, 10)
+}
+
+function incorrectAnswer() {
+  plusanione.style.color = "red";
+  plusanione.style.animation = "none";
+
+  setTimeout(function () {
+    plusanione.style.display = "block";
+    plusanione.style.animation = "effect 2s 1 normal forwards";
+  }, 10)
+}
 
 start();
 pointsUpdate();
