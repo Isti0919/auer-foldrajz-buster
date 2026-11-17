@@ -26,11 +26,8 @@ form{
     border-radius: 2rem;
 }
 body{
-    background-image: url("lines.png");
-
-    background-size: cover;
-    background-repeat: no-repeat;
     position: relative;
+    background-color: rgba(255, 200, 180, 0.8);
 }
 main{
     display: flex;
@@ -52,6 +49,11 @@ header{
     padding: 5px;
     border: rgba(0, 0, 0, 0.65) 5px solid;
     border-radius: 20px;
+
+    background-image: url("lines.png");
+
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .mini-wrapper{
     display: grid;
@@ -128,7 +130,7 @@ footer{
 #plusone{
     display: none;
     position: absolute;
-    bottom: -o.5em;
+    bottom: 0.5em;
     right: -0.5rem;
     font-size: 1.3rem;
     font-weight: bold;
@@ -141,10 +143,11 @@ footer{
 @keyframes effect {
     from{
         transform: translate(0, 0);
+        opacity: 1;
     }
     to{
         transform: translateX(9px) translateY(-9px);
-        display: none;
+        opacity: 0;
     }
 }
 @media(device-width < 640px){
@@ -153,6 +156,9 @@ footer{
     background-image: none;
     background: #b946e3;
     background: linear-gradient(130deg,rgba(185, 70, 227, 1) 0%, rgba(151, 107, 176, 1) 33%, rgba(217, 108, 213, 1) 56%, rgba(237, 221, 83, 1) 100%);
+    }
+    .wrapper{
+        background-image: none;
     }
     .mini-wrapper{
         grid-template-columns: 1fr;
