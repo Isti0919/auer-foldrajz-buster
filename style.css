@@ -33,6 +33,24 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+}
+.agame{
+    flex: 1;
+    max-width: 70vw;
+    height: 70vh;
+    padding: 5px;
+    border: rgba(0, 0, 0, 0.65) 5px solid;
+    border-radius: 20px;
+
+    background-image: url("lines.png");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    container-type: inline-size;
+}
+#secondgame{
+    display: none;
 }
 header{
     display: flex;
@@ -43,18 +61,7 @@ header{
     height: 10vh;
 }
 
-.wrapper{
-    width: 70vw;
-    height: 70vh;
-    padding: 5px;
-    border: rgba(0, 0, 0, 0.65) 5px solid;
-    border-radius: 20px;
 
-    background-image: url("lines.png");
-
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 .mini-wrapper{
     display: grid;
     margin: auto;
@@ -64,12 +71,29 @@ header{
     width: 40%;
     height: 40%;
 }
+
+@container (max-width: 600px){
+    .mini-wrapper{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        padding: 10px;
+        gap: 3px;
+        width: 90%;
+        height: 70%;
+    }
+}
+
 button{
     background: var(--main-accent);
     backdrop-filter: blur(2px);
     border: 5px solid black;
     border-radius: 10rem;
     position: relative;
+}
+
+.mini-wrapper > button{
+    min-height: 70px;
+    min-width: 200px;
 }
 button:disabled{
     color: black;
@@ -159,14 +183,6 @@ footer{
     }
     .wrapper{
         background-image: none;
-    }
-    .mini-wrapper{
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
-        padding: 10px;
-        gap: 3px;
-        width: 90%;
-        height: 70%;
     }
     .correct{
         background: radial-gradient(green, transparent);
