@@ -1,59 +1,3 @@
-const countries = [
-    "Albania",
-    "Austria",
-    "Belgium",
-    "Croatia",
-    "Czechia",
-    "Denmark",
-    "Finland",
-    "France",
-    "Germany",
-    "Greece",
-    "Hungary",
-    "Iceland",
-    "Ireland",
-    "Italy",
-    "Netherlands",
-    "Norway",
-    "Poland",
-    "Portugal",
-    "Romania",
-    "Slovakia",
-    "Spain",
-    "Sweden",
-    "Switzerland",
-    "Ukraine",
-    "United Kingdom"
-];
-
-const capitals = [
-    "Tirana",
-    "Vienna",
-    "Brussels",
-    "Zagreb",
-    "Prague",
-    "Copenhagen",
-    "Helsinki",
-    "Paris",
-    "Berlin",
-    "Athens",
-    "Budapest",
-    "Reykjavik",
-    "Dublin",
-    "Rome",
-    "Amsterdam",
-    "Oslo",
-    "Warsaw",
-    "Lisbon",
-    "Bucharest",
-    "Bratislava",
-    "Madrid",
-    "Stockholm",
-    "Bern",
-    "Kyiv",
-    "London"
-];
-
 const achievements = [
   {
     name: "Welcome to the Hamster Wheel",
@@ -88,7 +32,7 @@ const achievementTab = document.getElementById("achievement-container");
 const invidAchievements = achievementTab.querySelectorAll("li");
 const achievementies = Array.from(invidAchievements);
 const plusanione = document.getElementById("plusone");
-let clength = countries.length;
+let clength = 0;
 let blength = buttons.length;
 let accOpen = false;
 let operation = undefined;
@@ -96,6 +40,24 @@ let corrAnswer = undefined;
 let points = Number(localStorage.getItem("YourScore") || 0);
 let correct = Number(localStorage.getItem("correctSoFar")) || 0;
 let incorrect = Number(localStorage.getItem("incorrectSoFar")) || 0;
+let countries = [];
+
+function check() {
+  fetch("countries.json")
+  .then((response) => { return response.json() })
+  .then((data) => {
+    countries = data;
+    return countries
+  })
+  .then((loadedCountries) => {
+    console.log(loadedCountries);
+    console.log(clength);
+    start();
+  })
+};
+
+
+
 
 logInForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -136,12 +98,12 @@ function start() {
   });
   continueB.style.display = "none";
   feedback.style.display = "none";
+  clength = countries.length;
   operation = getRandomPair(clength);
-  question.textContent = "Minek a fővárosa " + capitals[operation] + "?";
-  corrAnswer = countries[operation];
-  buttons[getRandomPair(blength)].textContent = (countries[operation]);
+  question.textContent = "Minek a fővárosa " + countries[operation].capital + "?";
+  corrAnswer = countries[operation].name;
+  buttons[getRandomPair(blength)].textContent = (countries[operation].name);
   returnedCountries = filter(countries, countries[operation]);
-  returnedCapitals = filter(capitals, capitals[operation]);
   buttons.forEach(writingCapitals);
   achievementCheck()
   greetUpdate()
@@ -150,9 +112,8 @@ function start() {
 function writingCapitals(button) {
   if (button.textContent.trim() == "") {
     let randomIndex = getRandomPair(returnedCountries.length);
-    button.textContent = returnedCountries[randomIndex];
+    button.textContent = returnedCountries[randomIndex].name;
     returnedCountries = filter(returnedCountries, returnedCountries[randomIndex]);
-    returnedCapitals = filter(returnedCapitals, returnedCapitals[randomIndex]);
   } else{}
 };
 
@@ -242,5 +203,5 @@ function incorrectAnswer() {
   }, 10)
 }
 
-start();
+check();
 pointsUpdate();

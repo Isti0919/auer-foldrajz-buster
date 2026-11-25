@@ -1,0 +1,127 @@
+[
+    {
+        "name": "Albania",
+        "capital": "Tirana",
+        "code": "al"
+    },
+    {
+        "name": "Austria",
+        "capital": "Vienna",
+        "code": "at"
+    },
+    {
+        "name": "Belgium",
+        "capital": "Brussels",
+        "code": "be"
+    },
+    {
+        "name": "Croatia",
+        "capital": "Zagreb",
+        "code": "hr"
+    },
+    {
+        "name": "Czechia",
+        "capital": "Prague",
+        "code": "cz"
+    },
+    {
+        "name": "Denmark",
+        "capital": "Copenhagen",
+        "code": "dk"
+    },
+    {
+        "name": "Finland",
+        "capital": "Helsinki",
+        "code": "fi"
+    },
+    {
+        "name": "France",
+        "capital": "Paris",
+        "code": "fr"
+    },
+    {
+        "name": "Germany",
+        "capital": "Berlin",
+        "code": "de"
+    },
+    {
+        "name": "Greece",
+        "capital": "Athens",
+        "code": "gr"
+    },
+    {
+        "name": "Hungary",
+        "capital": "Budapest",
+        "code": "hu"
+    },
+    {
+        "name": "Iceland",
+        "capital": "Reykjavík",
+        "code": "is"
+    },
+    {
+        "name": "Ireland",
+        "capital": "Dublin",
+        "code": "ie"
+    },
+    {
+        "name": "Italy",
+        "capital": "Rome",
+        "code": "it"
+    },
+    {
+        "name": "Netherlands",
+        "capital": "Amsterdam",
+        "code": "nl"
+    },
+    {
+        "name": "Norway",
+        "capital": "Oslo",
+        "code": "no"
+    },
+    {
+        "name": "Poland",
+        "capital": "Warsaw",
+        "code": "pl"
+    },
+    {
+        "name": "Portugal",
+        "capital": "Lisbon",
+        "code": "pt"
+    },
+    {
+        "name": "Romania",
+        "capital": "Bucharest",
+        "code": "ro"
+    },
+    {
+        "name": "Slovakia",
+        "capital": "Bratislava",
+        "code": "sk"
+    },
+    {
+        "name": "Spain",
+        "capital": "Madrid",
+        "code": "es"
+    },
+    {
+        "name": "Sweden",
+        "capital": "Stockholm",
+        "code": "se"
+    },
+    {
+        "name": "Switzerland",
+        "capital": "Bern",
+        "code": "ch"
+    },
+    {
+        "name": "Ukraine",
+        "capital": "Kyiv",
+        "code": "ua"
+    },
+    {
+        "name": "United Kingdom",
+        "capital": "London",
+        "code": "gb"
+    }
+]
